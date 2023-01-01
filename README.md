@@ -40,15 +40,17 @@ import { ref } from "vue";
       scopes, 
       prompt, 
       response_type
-    }
+    },
+    OnSuccess: microsoftCallBackSuccess,
+    Onfail: microsoftCallBackError,
   });
 
-  function appleCallBackSuccess(data) {
-    console.log('appleCallBackSuccess', data);
+  function microsoftCallBackSuccess(data) {
+    console.log('microsoftCallBackSuccess', data);
   }
 
-  function appleCallBackError(error) {
-    console.log('appleCallBackError', error);
+  function microsoftCallBackError(error) {
+    console.log('microsoftCallBackError', error);
   }
 </script>
 
