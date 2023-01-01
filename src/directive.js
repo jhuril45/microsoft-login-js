@@ -1,10 +1,9 @@
 import { directiveHooks } from "./utils";
-import { MicrosoftAuth } from './MicrosoftAuth'
+import { MicrosoftAuth } from './MicrosoftAuth';
 
 async function login(value) {
   try {
     const microsoftAuth = new MicrosoftAuth(value.auth || {});
-    console.log('microsoftAuth ', microsoftAuth)
     const data = await microsoftAuth.loginPopup(value.request || {})
     value.OnSuccess(data);
   } catch (error) {
@@ -40,9 +39,7 @@ function unbind(el, { value }) {
   el.removeEventListener("click", () => login(value));
 }
 
-function update(el, { value, oldValue }) {
-  initLogin(el, value);
-}
+function update(el, { value, oldValue }) {}
 
 const directive = {
   [directiveHooks.mounted]: bind,

@@ -12,24 +12,16 @@ export class MicrosoftAuth {
         storeAuthStateInCookie: authObj.storeAuthStateInCookie ? storeAuthStateInCookie : false,
       }
     }
+
     this.msalInstance = new PublicClientApplication(msalConfig);
+
     this.loginPopup = (request) => {
       const loginRequest = {
         scopes: request.scopes || ["openid", "profile", "User.Read"],
         prompt: request.prompt || "select_account",
         response_type: request.response_type || "id_token",
       };
-      return new Promise(function (resolve, reject) {
-        this.msalInstance
-        .loginPopup(loginRequest)
-        .then((response) => {
-          resolve(response);
-        })
-        .catch((error) => {
-          reject(error);
-        });
-      })
-      
+      return this.msalInstance.loginPopup(loginRequest)
     };
   }
 }
