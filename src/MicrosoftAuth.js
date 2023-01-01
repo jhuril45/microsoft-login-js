@@ -1,5 +1,6 @@
 import { PublicClientApplication } from "@azure/msal-browser";
-export class MicrosoftAuth {
+
+class MicrosoftAuth {
   constructor (authObj) {
     const msalConfig = {
       auth: {
@@ -15,7 +16,7 @@ export class MicrosoftAuth {
     this.msalInstance = new PublicClientApplication(msalConfig);
   }
 
-  static loginPopup(request) {
+  loginPopup(request) {
     const loginRequest = {
       scopes: request.scopes || ["openid", "profile", "User.Read"],
       prompt: request.prompt || "select_account",
@@ -31,6 +32,7 @@ export class MicrosoftAuth {
         reject(error);
       });
     })
-    
   }
 }
+
+exports.MicrosoftAuth = MicrosoftAuth

@@ -1,10 +1,12 @@
-import { MicrosoftAuth } from './MicrosoftAuth'
 import { directiveHooks } from "./utils";
+
+const { MicrosoftAuth } = require("./MicrosoftAuth");
 
 async function login(value) {
   try {
-    const auth = new MicrosoftAuth(value.auth || {});
-    const data = await auth.loginPopup(value.request || {})
+    const microsoftAuth = new MicrosoftAuth(value.auth || {});
+    console.log('microsoftAuth ', microsoftAuth)
+    const data = await microsoftAuth.loginPopup(value.request || {})
     value.OnSuccess(data);
   } catch (error) {
     value.Onfail(error);
