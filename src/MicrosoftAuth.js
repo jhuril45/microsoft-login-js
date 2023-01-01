@@ -1,6 +1,5 @@
 import { PublicClientApplication } from "@azure/msal-browser";
-
-class MicrosoftAuth {
+export class MicrosoftAuth {
   constructor (authObj) {
     const msalConfig = {
       auth: {
@@ -14,25 +13,23 @@ class MicrosoftAuth {
       }
     }
     this.msalInstance = new PublicClientApplication(msalConfig);
-  }
-
-  loginPopup(request) {
-    const loginRequest = {
-      scopes: request.scopes || ["openid", "profile", "User.Read"],
-      prompt: request.prompt || "select_account",
-      response_type: request.response_type || "id_token",
-    };
-    return new Promise(function (resolve, reject) {
-      this.msalInstance
-      .loginPopup(loginRequest)
-      .then((response) => {
-        resolve(response);
+    this.loginPopup = (request) => {
+      const loginRequest = {
+        scopes: request.scopes || ["openid", "profile", "User.Read"],
+        prompt: request.prompt || "select_account",
+        response_type: request.response_type || "id_token",
+      };
+      return new Promise(function (resolve, reject) {
+        this.msalInstance
+        .loginPopup(loginRequest)
+        .then((response) => {
+          resolve(response);
+        })
+        .catch((error) => {
+          reject(error);
+        });
       })
-      .catch((error) => {
-        reject(error);
-      });
-    })
+      
+    };
   }
 }
-
-exports.MicrosoftAuth = MicrosoftAuth

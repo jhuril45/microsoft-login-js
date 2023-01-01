@@ -1,6 +1,5 @@
 import { directiveHooks } from "./utils";
-
-const { MicrosoftAuth } = require("./MicrosoftAuth");
+import { MicrosoftAuth } from './MicrosoftAuth'
 
 async function login(value) {
   try {
