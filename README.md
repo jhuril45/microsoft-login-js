@@ -8,7 +8,7 @@ $ npm install --save vue-microsoft-login-directive
 ```
 
 ```bash
-$ yarn add vue-microsoft-login-directive
+$ yarn add microsoft-login-js
 ```
 
 ## Vue2
