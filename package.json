@@ -1,6 +1,6 @@
 {
   "name": "microsoft-login-js",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "A simple log in with Microsoft directive for vue",
   "main": "src/index.js",
   "scripts": {
@@ -10,8 +10,8 @@
     "@azure/core-http": "1.1.8",
     "@azure/msal-browser": "^2.3.1",
     "@azure/storage-blob": "12.2.1",
-    "vue": "npm:vue@^2.7.14",
-    "vue3": "npm:vue@^3.0.0"
+    "vue": "^2.7.14",
+    "vue3": "^3.0.0"
   },
   "keywords": [
     "github",
